@@ -11,6 +11,7 @@
 
 	<artifactId>s2sform</artifactId>
 	<packaging>jar</packaging>
+	<version>1.0</version>
 	<build>
 		<resources>
 			<resource>
