@@ -15,15 +15,15 @@
 	limitations under the License.
 -->
 <FormBinding>
-<Form namespace="http://apply.grants.gov/forms/RR_SF424-V1.1">
-		<formName>RR_SF424-V1.1</formName>
+	<Form namespace="http://apply.grants.gov/forms/PHS398_ModularBudget_1_2-V1.2">
+		<formName>PHS398_ModularBudget_1_2-V1.2</formName>
 		<mainClass>
-			org.kuali.kra.s2s.rrsf424v11.RRSF424V1_1Generator_V2
+			org.kuali.kra.s2s.phs398modularbudget.PHS398ModularBudgetV1_2Generator
 		</mainClass>
 		<stylesheet>
-			org/kuali/kra/s2s/rrsf424v11/RR_SF424-V1.1.1.fo.xsl
+			org/kuali/kra/s2s/phs398modularbudget/PHS398_ModularBudget-V1.2.fo.xsl
 		</stylesheet>
-		<pkgName>gov.grants.apply.forms.rrSF424V11</pkgName>
+		<pkgName>gov.grants.apply.forms.phs398ModularBudget12V12</pkgName>
 		<sortIndex>1</sortIndex>
 	</Form>
 </FormBinding>
