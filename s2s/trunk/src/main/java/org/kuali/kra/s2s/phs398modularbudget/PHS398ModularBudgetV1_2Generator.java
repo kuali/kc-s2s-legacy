@@ -298,7 +298,7 @@ PHS398ModularBudgetBaseGenerator{
 	            Organization organization = pdDoc.getDevelopmentProposal()
 	            .getApplicantOrganization().getOrganization();
 	            if (organization != null) {
-	                Rolodex rolodex = organization.getRolodex();
+	                Rolodex rolodex = organization.getCognizantAuditorRolodex();
 	                if (rolodex != null) {
 	                    indirectCost
 	                    .setCognizantFederalAgency(getCognizantFederalAgency(rolodex));
