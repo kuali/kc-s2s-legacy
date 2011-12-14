@@ -61,7 +61,7 @@ PHS398ModularBudgetBaseGenerator{
 		.newInstance();
 		PHS398ModularBudget12 modularBudget = PHS398ModularBudget12.Factory
 		.newInstance();
-		modularBudget.setFormVersion(S2SConstants.FORMVERSION_1_1);
+		modularBudget.setFormVersion(S2SConstants.FORMVERSION_1_2);
 
 		Budget budget = null;
 		try {
