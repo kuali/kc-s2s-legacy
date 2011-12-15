@@ -282,7 +282,12 @@ PHS398ModularBudgetBaseGenerator{
 	                                .bigDecimalValue());
 	                    }
 	                    if (budgetModularIdc.getDescription() != null) {
-	                        costType = budgetModularIdc.getDescription();
+	                    	 if (budgetModularIdc.getRateClass() != null) {
+
+		                            costType = budgetModularIdc.getRateClass().getDescription();
+		                            }else{
+		                                 costType = budgetModularIdc.getDescription();
+		                                 }
 	                        indirectCostItems.setIndirectCostTypeDescription(costType);
 	                    }
 	                    indirectCostItemsList.add(indirectCostItems);
