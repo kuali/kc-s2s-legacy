@@ -2,17 +2,27 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent> 
-		<groupId>s2s</groupId>
+		<groupId>org.kuali.kra.s2s</groupId>
 		<artifactId>kc_s2s_project</artifactId> 
 		<version>0.0.1-SNAPSHOT</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent> 
-
-
 	<artifactId>s2sform</artifactId>
 	<packaging>jar</packaging>
 	<version>1.0</version>
 	<build>
+		<plugins>
+ 	      <plugin>
+	        <groupId>org.apache.maven.plugins</groupId>
+	        <artifactId>maven-jar-plugin</artifactId>
+	        <version>2.4</version>
+	        <configuration>
+	          <archive>
+				<addMavenDescriptor>false</addMavenDescriptor>
+			  </archive>
+	        </configuration>
+	      </plugin>
+	    </plugins>
 		<resources>
 			<resource>
 				<directory>../src/main/resources</directory>

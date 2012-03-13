@@ -3,7 +3,7 @@
 	<name>kc_s2s_project</name>
 	<comment>NO_M2ECLIPSE_SUPPORT: Project files created with the maven-eclipse-plugin are not supported in M2Eclipse.</comment>
 	<projects>
-		<project>kc_project-offshore-br</project>
+		<project>kc_project</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
