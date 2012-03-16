@@ -16,7 +16,7 @@
 
 <S2SErrors>
 	<Error>
- 		<MessageKey>/GrantApplication/Forms/PHS398_ModularBudget_1_2 is not valid</MessageKey> 
+ 		<MessageKey>/GrantApplication/Forms/PHS398_ModularBudget_1_2</MessageKey> 
  		<Message>Please add a budget to the proposal and complete the Modular Budget tab.</Message> 
   		<FixLink>budgetVersions</FixLink> 
 	</Error>
