@@ -7,9 +7,9 @@
 		<version>0.0.1-SNAPSHOT</version>
 		<!-- <relativePath>../pom.xml</relativePath> -->
 	</parent>
-	<artifactId>phs398modularbudget-1.2</artifactId>
+	<artifactId>sf424-2.1-gg</artifactId>
 	<packaging>jar</packaging>
-	<version>1.0.4</version>
+	<version>1.0.5</version>
 		<build>
 		<plugins>
  	      <plugin>
@@ -25,15 +25,15 @@
 	    </plugins>
 		<resources>
 			<resource>
-				<targetPath>org/kuali/kra/s2s/phs398modularbudget</targetPath>
-				<directory>../src/main/java/org/kuali/kra/s2s/phs398modularbudget</directory>
+				<targetPath>org/kuali/kra/s2s/sf424</targetPath>
+				<directory>../src/main/java/org/kuali/kra/s2s/sf424</directory>
 				<excludes>
 					<exclude>**/*.java</exclude>
 				</excludes>
 			</resource>
 			<resource>
-			 <targetPath>org/kuali/kra/s2s/phs398modularbudget</targetPath>
-			 <directory>../target/classes/org/kuali/kra/s2s/phs398modularbudget</directory>
+			 <targetPath>org/kuali/kra/s2s/sf424</targetPath>
+			 <directory>../target/classes/org/kuali/kra/s2s/sf424</directory>
 			</resource>
 		</resources>
 		
