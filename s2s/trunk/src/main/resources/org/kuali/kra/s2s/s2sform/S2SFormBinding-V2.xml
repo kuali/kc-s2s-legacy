@@ -26,4 +26,14 @@
 		<pkgName>gov.grants.apply.forms.phs398ModularBudget12V12</pkgName>
 		<sortIndex>1</sortIndex>
 	</Form>
+	<Form namespace="http://apply.grants.gov/forms/SF424_2_1-V2.1">
+		<formName>SF424-V2.1</formName>
+		<mainClass>
+			org.kuali.kra.s2s.sf424.SF424V2_1Generator
+		</mainClass>
+		<stylesheet>
+			org/kuali/kra/s2s/sf424/SF424-V2.1.fo.xsl
+		</stylesheet>
+		<pkgName>gov.grants.apply.forms.sf424V21</pkgName>
+	</Form>
 </FormBinding>

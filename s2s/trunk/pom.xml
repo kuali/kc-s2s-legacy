@@ -25,6 +25,6 @@
 		<kc_project.build.directory>../kc_project</kc_project.build.directory>
 		<kc_project.artifactId>kc_project</kc_project.artifactId>
 		<kc_project.groupId>org.kuali.kra</kc_project.groupId>
-		<kc_project.version>4.0</kc_project.version>
+		<kc_project.version>5.0.1</kc_project.version>
 	</properties>
  </project>
