@@ -36,4 +36,14 @@
 		</stylesheet>
 		<pkgName>gov.grants.apply.forms.sf424V21</pkgName>
 	</Form>
+	<Form namespace="http://apply.grants.gov/forms/Key_Contacts-V1.0">
+		<formName>Key_Contacts-V1.0</formName>
+		<mainClass>
+			org.kuali.kra.s2s.keycontacts.KeyContactsV1_0Generator
+		</mainClass>
+		<stylesheet>
+			org/kuali/kra/s2s/stylesheet/KeyContacts.fo.xsl
+		</stylesheet>
+		<pkgName>gov.grants.apply.forms.KeyContactsV10</pkgName>
+	</Form>
 </FormBinding>

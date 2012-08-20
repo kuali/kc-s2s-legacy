@@ -7,9 +7,9 @@
 		<version>0.0.1-SNAPSHOT</version>
 		<!-- <relativePath>../pom.xml</relativePath> -->
 	</parent>
-	<artifactId>sf424-2.1-gg</artifactId>
+	<artifactId>keycontacts-1.0-gg</artifactId>
 	<packaging>jar</packaging>
-	<version>1.0.5</version>
+	<version>1.0</version>
 		<build>
 		<plugins>
  	      <plugin>
@@ -25,15 +25,15 @@
 	    </plugins>
 		<resources>
 			<resource>
-				<targetPath>org/kuali/kra/s2s/sf424</targetPath>
-				<directory>../src/main/java/org/kuali/kra/s2s/sf424</directory>
+				<targetPath>org/kuali/kra/s2s/keycontacts</targetPath>
+				<directory>../src/main/java/org/kuali/kra/s2s/keycontacts</directory>
 				<excludes>
 					<exclude>**/*.java</exclude>
 				</excludes>
 			</resource>
 			<resource>
-			 <targetPath>org/kuali/kra/s2s/sf424</targetPath>
-			 <directory>../target/classes/org/kuali/kra/s2s/sf424</directory>
+			 <targetPath>org/kuali/kra/s2s/keycontacts</targetPath>
+			 <directory>../target/classes/org/kuali/kra/s2s/keycontacts</directory>
 			</resource>
 		</resources>
 		
