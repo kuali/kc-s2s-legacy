@@ -1,5 +1,6 @@
 package org.kuali.kra.s2s.phs398modularbudget;
 
+import java.io.ByteArrayInputStream;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -79,6 +80,8 @@ PHS398ModularBudgetBaseGenerator{
 			modularBudget.setCummulativeBudgetInfo(getCummBudget());
 		}
 		modularBudgetDocument.setPHS398ModularBudget12(modularBudget);
+		ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(modularBudgetDocument.toString().getBytes());            
+        sortAttachments(byteArrayInputStream);
 		return modularBudgetDocument;
 	}
 
