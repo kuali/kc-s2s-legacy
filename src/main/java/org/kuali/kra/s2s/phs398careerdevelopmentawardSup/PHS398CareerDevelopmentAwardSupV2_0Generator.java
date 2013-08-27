@@ -57,8 +57,8 @@ import org.kuali.kra.s2s.util.S2SConstants;
 
 /**
  * Class for generating the XML object for grants.gov
- * PHS398CareerDevelopmentAwardSup V1.1 Form is generated using XMLBean classes
- * and is based on PHS398ResearchPlanV1_2 schema.
+ * PHS398CareerDevelopmentAwardSup V2.0 Form is generated using XMLBean classes
+ * and is based on PHS398ResearchPlanV2_0 schema.
  * 
  * @author Kuali Research Administration Team (kualidev@oncourse.iu.edu)
  */
