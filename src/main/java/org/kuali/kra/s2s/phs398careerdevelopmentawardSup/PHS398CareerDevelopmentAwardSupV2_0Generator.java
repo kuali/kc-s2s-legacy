@@ -71,7 +71,7 @@ public class PHS398CareerDevelopmentAwardSupV2_0Generator extends
 		PHS398CareerDevelopmentAwardSup20 phs398CareerDevelopmentAwardSup20 = PHS398CareerDevelopmentAwardSup20.Factory
 				.newInstance();
 		phs398CareerDevelopmentAwardSup20
-				.setFormVersion(S2SConstants.FORMVERSION_1_2);		
+				.setFormVersion(S2SConstants.FORMVERSION_2_0);		
 		phs398CareerDevelopmentAwardSup20
 				.setCitizenship(getCitizenshipDataType());
 		phs398CareerDevelopmentAwardSup20
