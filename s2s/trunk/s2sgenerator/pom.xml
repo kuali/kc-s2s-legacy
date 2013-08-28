@@ -7,7 +7,7 @@
 		<version>0.0.1-SNAPSHOT</version>
 		<!-- <relativePath>../pom.xml</relativePath> -->
 	</parent>
-	<artifactId>phs398researchplan-2.0-gg</artifactId>
+	<artifactId>phs398researchtrainingprogramplan-2.0-gg</artifactId>
 	<packaging>jar</packaging>
 	<version>1.0</version>
 		<build>
@@ -25,15 +25,15 @@
 	    </plugins>
 		<resources>
 			<resource>
-				<targetPath>org/kuali/kra/s2s/phs398researchplan</targetPath>
-				<directory>../src/main/java/org/kuali/kra/s2s/phs398researchplan</directory>
+				<targetPath>org/kuali/kra/s2s/phs398researchtrainingprogramplan</targetPath>
+				<directory>../src/main/java/org/kuali/kra/s2s/phs398researchtrainingprogramplan</directory>
 				<excludes>
 					<exclude>**/*.java</exclude>
 				</excludes>
 			</resource>
 			<resource>
-			 <targetPath>org/kuali/kra/s2s/phs398researchplan</targetPath>
-			 <directory>../target/classes/org/kuali/kra/s2s/phs398researchplan</directory>
+			 <targetPath>org/kuali/kra/s2s/phs398researchtrainingprogramplan</targetPath>
+			 <directory>../target/classes/org/kuali/kra/s2s/phs398researchtrainingprogramplan</directory>
 			</resource>
 		</resources>
 		
