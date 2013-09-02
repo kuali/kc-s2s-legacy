@@ -56,4 +56,14 @@
  		<Message>Please answer the State Review Date questions for this form within the Questions tab.</Message> 
  	    <FixLink>questions</FixLink> 
   	</Error>
+  	<Error>
+  		<MessageKey>/GrantApplication/Forms/RR_KeyPersonExpanded_2_0/PDPI</MessageKey> 
+  		<Message> A PD/PI is required, please add a Principal Investigator to the proposal.</Message> 
+  		<FixLink>keyPersonnel</FixLink> 
+  	</Error>
+  	<Error>
+  		<MessageKey>/GrantApplication/Forms/RR_KeyPersonExpanded_2_0/PDPI/Profile/BioSketchsAttached/BioSketchAttached</MessageKey> 
+ 		<Message>Each investigator and key person must have a BioSketch. Upload the PDF on the Personnel Attachments panel, with "BIOSKETCH" as the attachment type.</Message> 
+  		<FixLink>abstractsAttachments</FixLink> 
+  	</Error>
 </S2SErrors>
