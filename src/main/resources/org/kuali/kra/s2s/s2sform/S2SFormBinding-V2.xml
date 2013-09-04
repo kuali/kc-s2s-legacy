@@ -107,4 +107,15 @@
 		</stylesheet>
 		<pkgName>gov.grants.apply.forms.phs398CoverPageSupplement20V20</pkgName>
 	</Form>
+	<Form
+		namespace="http://apply.grants.gov/forms/PerformanceSite_2_0-V2.0">
+		<formName>PerformanceSite_2_0</formName>
+		<mainClass>
+			org.kuali.kra.s2s.performancesite.PerformanceSiteV2_0Generator
+		</mainClass>
+		<stylesheet>
+			org/kuali/kra/s2s/performancesite/PerformanceSite-V2.0.xsl
+		</stylesheet>
+		<pkgName>gov.grants.apply.forms.performanceSite20V20</pkgName>
+	</Form>
 </FormBinding>

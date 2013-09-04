@@ -66,4 +66,9 @@
  		<Message>Each investigator and key person must have a BioSketch. Upload the PDF on the Personnel Attachments panel, with "BIOSKETCH" as the attachment type.</Message> 
   		<FixLink>abstractsAttachments</FixLink> 
   	</Error>
+  	<Error>
+ 		<MessageKey>/GrantApplication/Forms/PerformanceSite_2_0/AttachedFile</MessageKey> 
+ 		<Message>Performance Sites attachment is required since Performance Site Locations exceed the maximum of 29.</Message> 
+  		<FixLink>abstractsAttachments</FixLink> 
+	</Error>
 </S2SErrors>
