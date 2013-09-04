@@ -7,7 +7,7 @@
 		<version>0.0.1-SNAPSHOT</version>
 		<!-- <relativePath>../pom.xml</relativePath> -->
 	</parent>
-	<artifactId>rrkeypersonexpanded-2.0-gg</artifactId>
+	<artifactId>performancesite-2.0-gg</artifactId>
 	<packaging>jar</packaging>
 	<version>1.0</version>
 		<build>
@@ -25,15 +25,15 @@
 	    </plugins>
 		<resources>
 			<resource>
-				<targetPath>org/kuali/kra/s2s/rrkeypersonexpanded</targetPath>
-				<directory>../src/main/java/org/kuali/kra/s2s/rrkeypersonexpanded</directory>
+				<targetPath>org/kuali/kra/s2s/performancesite</targetPath>
+				<directory>../src/main/java/org/kuali/kra/s2s/performancesite</directory>
 				<excludes>
 					<exclude>**/*.java</exclude>
 				</excludes>
 			</resource>
 			<resource>
-			 <targetPath>org/kuali/kra/s2s/rrkeypersonexpanded</targetPath>
-			 <directory>../target/classes/org/kuali/kra/s2s/rrkeypersonexpanded</directory>
+			 <targetPath>org/kuali/kra/s2s/performancesite</targetPath>
+			 <directory>../target/classes/org/kuali/kra/s2s/performancesite</directory>
 			</resource>
 		</resources>
 		
