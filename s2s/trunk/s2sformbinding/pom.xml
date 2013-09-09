@@ -9,7 +9,7 @@
 	</parent> 
 	<artifactId>s2sform</artifactId>
 	<packaging>jar</packaging>
-	<version>1.0.9</version>
+	<version>1.0.8</version>
 	<build>
 		<plugins>
  	      <plugin>
