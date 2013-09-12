@@ -128,4 +128,15 @@
 		</stylesheet>
 		<pkgName>gov.grants.apply.forms.rrSubawardBudget3013V13</pkgName>
 	</Form>
+	<Form
+		namespace="http://apply.grants.gov/forms/RR_Budget_1_3-V1.3">
+		<formName>RR_Budget_1_3</formName>
+		<mainClass>
+			org.kuali.kra.s2s.rrbudget.RRBudgetV1_3Generator
+		</mainClass>
+		<stylesheet>
+			org/kuali/kra/s2s/rrbudget/RR_Budget-V1.3.xsl
+		</stylesheet>
+		<pkgName>gov.grants.apply.forms.rrBudget13V13</pkgName>
+	</Form>
 </FormBinding>
