@@ -7,7 +7,7 @@
 		<version>0.0.1-SNAPSHOT</version>
 		<!-- <relativePath>../pom.xml</relativePath> -->
 	</parent>
-	<artifactId>phs398trainingsubawardbudget-2.0-gg</artifactId>
+	<artifactId>phsfellowshipsupplemental-2.0-gg</artifactId>
 	<packaging>jar</packaging>
 	<version>1.0</version>
 		<build>
@@ -25,15 +25,15 @@
 	    </plugins>
 		<resources>
 			<resource>
-				<targetPath>org/kuali/kra/s2s/phs398trainingsubawardbudget</targetPath>
-				<directory>../src/main/java/org/kuali/kra/s2s/phs398trainingsubawardbudget</directory>
+				<targetPath>org/kuali/kra/s2s/phsfellowshipsupplemental</targetPath>
+				<directory>../src/main/java/org/kuali/kra/s2s/phsfellowshipsupplemental</directory>
 				<excludes>
 					<exclude>**/*.java</exclude>
 				</excludes>
 			</resource>
 			<resource>
-			 <targetPath>org/kuali/kra/s2s/phs398trainingsubawardbudget</targetPath>
-			 <directory>../target/classes/org/kuali/kra/s2s/phs398trainingsubawardbudget</directory>
+			 <targetPath>org/kuali/kra/s2s/phsfellowshipsupplemental</targetPath>
+			 <directory>../target/classes/org/kuali/kra/s2s/phsfellowshipsupplemental</directory>
 			</resource>
 		</resources>
 		

@@ -150,4 +150,15 @@
 		</stylesheet>
 		<pkgName>gov.grants.apply.forms.phs398TrainingSubawardBudget20V20</pkgName>
 	</Form>
+	<Form
+		namespace="http://apply.grants.gov/forms/PHS_Fellowship_Supplemental_2_0-V2.0">
+		<formName>PHS_Fellowship_Supplemental_2_0</formName>
+		<mainClass>
+			org.kuali.kra.s2s.phsfellowshipsupplemental.PHS398FellowshipSupplementalV2_0Generator
+		</mainClass>
+		<stylesheet>
+			org/kuali/kra/s2s/phsfellowshipsupplemental/PHS_fellowship_supplemental-V2.xsl
+		</stylesheet>
+		<pkgName>gov.grants.apply.forms.phsFellowshipSupplemental20V20</pkgName>
+	</Form>
 </FormBinding>
