@@ -128,6 +128,7 @@
 		</stylesheet>
 		<pkgName>gov.grants.apply.forms.rrSubawardBudget3013V13</pkgName>
 	</Form>
+
 	<Form
 		namespace="http://apply.grants.gov/forms/RR_Budget_1_3-V1.3">
 		<formName>RR_Budget_1_3</formName>
@@ -160,5 +161,15 @@
 			org/kuali/kra/s2s/phsfellowshipsupplemental/PHS_fellowship_supplemental-V2.xsl
 		</stylesheet>
 		<pkgName>gov.grants.apply.forms.phsFellowshipSupplemental20V20</pkgName>
+	</Form>
+		<Form namespace="http://apply.grants.gov/forms/RR_SF424_2_0-V2.0">
+		<formName>RR_SF424_2_0</formName>
+		<mainClass>
+			org.kuali.kra.s2s.sf424r.RRSF424_2_0_V2Generator
+		</mainClass>
+		<stylesheet>
+			org/kuali/kra/s2s/sf424r/RR_SF424_2_0-V2.0.fo.xsl
+		</stylesheet>
+		<pkgName>gov.grants.apply.forms.rrSF42420V20</pkgName>
 	</Form>
 </FormBinding>
