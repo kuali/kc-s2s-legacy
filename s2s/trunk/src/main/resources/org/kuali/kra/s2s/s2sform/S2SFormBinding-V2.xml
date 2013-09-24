@@ -172,4 +172,17 @@
 		</stylesheet>
 		<pkgName>gov.grants.apply.forms.rrSF42420V20</pkgName>
 	</Form>
+	<Form          
+		namespace="http://apply.grants.gov/forms/RR_OtherProjectInfo_1_3-V1.3">
+		<formName>RR_OtherProjectInfo_1_3</formName>
+		<mainClass>
+			org.kuali.kra.s2s.rrotherproject.RROtherProjectInfo_1_3_V1Generator
+		</mainClass>
+		<stylesheet>
+			org/kuali/kra/s2s/rrotherproject/RR_OtherProjectInfo_1_3-V1.3.fo.xsl
+		</stylesheet>
+		<pkgName>
+			gov.grants.apply.forms.rrOtherProjectInfo13V13
+		</pkgName>
+	</Form>
 </FormBinding>
