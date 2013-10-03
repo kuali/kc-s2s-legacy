@@ -185,4 +185,16 @@
 			gov.grants.apply.forms.rrOtherProjectInfo13V13
 		</pkgName>
 	</Form>
+	<Form namespace="http://apply.grants.gov/forms/RR_SubawardBudget10_30_1_3-V1.3">
+		<formName>RR_SubawardBudget10_30_1_3</formName>
+		<mainClass>
+			org.kuali.kra.s2s.rrsubawardbudget10_30.RRSubAwardBudget10_30_1_3V1_3Generator
+		</mainClass>
+		<stylesheet>
+			org/kuali/kra/s2s/rrsubawardbudget10_30/RR_SubawardBudget10_30_1_3-V1.3.fo.xsl
+		</stylesheet>
+		<pkgName>
+			gov.grants.apply.forms.rrSubawardBudget103013V13
+		</pkgName>
+	</Form>
 </FormBinding>
