@@ -197,4 +197,30 @@
 			gov.grants.apply.forms.rrSubawardBudget103013V13
 		</pkgName>
 	</Form>
+	<Form
+		namespace="http://apply.grants.gov/forms/RR_Budget10_1_3-V1.3">
+		<formName>RR_Budget10_1_3</formName>
+		<mainClass>
+			org.kuali.kra.s2s.rrbudget10.RRBudget10V1_3Generator
+		</mainClass>
+		<stylesheet>
+			org/kuali/kra/s2s/rrbudget10/RR_Budget10-V1-3.fo.xsl
+		</stylesheet>
+		<pkgName>
+			gov.grants.apply.forms.rrBudget1013V13
+		</pkgName>
+	</Form>
+	<Form
+		namespace="http://apply.grants.gov/forms/RR_SubawardBudget10_10_1_3-V1.3">
+		<formName>RR_SubawardBudget10_10_1_3</formName>
+		<mainClass>
+			org.kuali.kra.s2s.rrsubawardbudget10.RRSubAwardBudget10_10V1_3Generator
+		</mainClass>
+		<stylesheet>
+			org/kuali/kra/s2s/rrsubawardbudget10/RR_SubawardBudget10_10-V1.3.fo.xsl
+		</stylesheet>
+		<pkgName>
+			gov.grants.apply.forms.rrSubawardBudget101013V13
+		</pkgName>
+	</Form>
 </FormBinding>
