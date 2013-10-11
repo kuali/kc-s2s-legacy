@@ -5,9 +5,6 @@
 	<xs:import namespace="http://apply.grants.gov/system/Attachments-V1.0" schemaLocation="http://apply07.grants.gov/apply/system/schemas/Attachments-V1.0.xsd"/>
 	<xs:import namespace="http://apply.grants.gov/forms/RR_Budget10_1_3-V1.3" schemaLocation="http://apply07.grants.gov/apply/forms/schemas/RR_Budget10_1_3-V1.3.xsd"/>
 	<xs:element name="RR_SubawardBudget10_30_1_3">
-		<xs:annotation>
-			<xs:documentation>Comment describing your root element</xs:documentation>
-		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="ATT1" type="xs:string" minOccurs="0"/>
