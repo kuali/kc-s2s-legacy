@@ -174,7 +174,7 @@
 	</Form>
 	<Form          
 		namespace="http://apply.grants.gov/forms/RR_OtherProjectInfo_1_3-V1.3">
-		<formName>RR_OtherProjectInfo_1_3</formName>
+		<formName>RR_OtherProjectInfo_1_3-V1.3</formName>
 		<mainClass>
 			org.kuali.kra.s2s.rrotherproject.RROtherProjectInfo_1_3_V1Generator
 		</mainClass>
