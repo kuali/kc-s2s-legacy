@@ -164,7 +164,6 @@ public class PHS398FellowshipSupplementalV2_0Generator extends PHS398FellowshipS
         List<Answer> returnAnswers = new ArrayList<Answer>();
         if (answerHeader != null) {
             List<Answer> answers = answerHeader.getAnswers();
-            //List<Answer> answerList = new ArrayList<Answer>();
             for (Answer answer : answers) {
                 if (answer.getQuestionnaireQuestionsIdFk().equals(questionnaireQuestion.getQuestionnaireQuestionsId())) {               
                     returnAnswers.add(answer);
@@ -836,7 +835,7 @@ public class PHS398FellowshipSupplementalV2_0Generator extends PHS398FellowshipS
     private List<AnswerHeader> findQuestionnaireWithAnswers(DevelopmentProposal developmentProposal) {
         ProposalDevelopmentS2sQuestionnaireService questionnaireAnswerService = getProposalDevelopmentS2sQuestionnaireService();
         return questionnaireAnswerService.getProposalAnswerHeaderForForm(developmentProposal,
-                "http://apply.grants.gov/forms/PHS_Fellowship_Supplemental_2_0-V2.0", "PHS_Fellowship_Supplemental_2_0-V2.0");
+                "http://apply.grants.gov/forms/PHS_Fellowship_Supplemental_2_0-V2.0", "PHS_Fellowship_Supplemental_2_0");
     }
 
     private ProposalDevelopmentS2sQuestionnaireService getProposalDevelopmentS2sQuestionnaireService() {
