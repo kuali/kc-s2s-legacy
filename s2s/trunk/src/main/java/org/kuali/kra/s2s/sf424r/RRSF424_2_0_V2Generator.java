@@ -842,8 +842,10 @@ public class RRSF424_2_0_V2Generator extends RRSF424BaseGenerator {
 		ProposalSite applicantOrganization = pdDoc.getDevelopmentProposal()
 				.getApplicantOrganization();
 		if (applicantOrganization != null) {
+		    if(applicantOrganization.getOrganization().getPhsAccount()!= null){
 			employerId = applicantOrganization.getOrganization()
-					.getFedralEmployerId();
+					.getPhsAccount();
+		    }
 		}
 		return employerId;
 	}
