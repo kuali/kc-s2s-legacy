@@ -841,12 +841,18 @@ public class RRSF424_2_0_V2Generator extends RRSF424BaseGenerator {
 		String employerId = "";
 		ProposalSite applicantOrganization = pdDoc.getDevelopmentProposal()
 				.getApplicantOrganization();
-		if (applicantOrganization != null) {
-		    if(applicantOrganization.getOrganization().getPhsAccount()!= null){
-			employerId = applicantOrganization.getOrganization()
-					.getPhsAccount();
-		    }
-		}
+        
+        if (applicantOrganization != null) {            
+            if(applicantOrganization.getOrganization().getPhsAccount()!= null){             
+                employerId = applicantOrganization.getOrganization()
+                        .getPhsAccount();
+            }else{
+
+                employerId = applicantOrganization.getOrganization()
+                        .getFedralEmployerId();
+            }
+        }
+
 		return employerId;
 	}
 
