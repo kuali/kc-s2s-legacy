@@ -454,22 +454,26 @@ public class RRKeyPersonExpandedV2_0Generator extends
 	 */
 	private void setProjectRoleCategoryToProfile(ProposalPerson keyPerson,
 			Profile profileKeyPerson) {
-		profileKeyPerson.setProjectRole(ProjectRoleDataType.OTHER_SPECIFY);
-		OtherProjectRoleCategory otherProjectRole = OtherProjectRoleCategory.Factory
-				.newInstance();
-		String otherRole;
-		if (keyPerson.getRole().getDescription() != null) {
-			if (keyPerson.getProjectRole().length() > ROLE_DESCRIPTION_MAX_LENGTH) {
-				otherRole = keyPerson.getProjectRole().substring(0,
-						ROLE_DESCRIPTION_MAX_LENGTH);
-			} else {
-				otherRole = keyPerson.getProjectRole();
-			}
-		} else {
-			otherRole = S2SConstants.VALUE_UNKNOWN;
-		}
-		otherProjectRole.setStringValue(otherRole);
-		profileKeyPerson.setOtherProjectRoleCategory(otherProjectRole);
+	    if (keyPerson.getRolodexId() == null) {
+	        profileKeyPerson.setProjectRole(ProjectRoleDataType.OTHER_SPECIFY);
+	        OtherProjectRoleCategory otherProjectRole = OtherProjectRoleCategory.Factory
+	                .newInstance();
+	        String otherRole;
+	        if (keyPerson.getRole().getDescription() != null) {
+	            if (keyPerson.getProjectRole().length() > ROLE_DESCRIPTION_MAX_LENGTH) {
+	                otherRole = keyPerson.getProjectRole().substring(0,
+	                        ROLE_DESCRIPTION_MAX_LENGTH);
+	            } else {
+	                otherRole = keyPerson.getProjectRole();
+	            }
+	        } else {
+	            otherRole = S2SConstants.VALUE_UNKNOWN;
+	        }
+	        otherProjectRole.setStringValue(otherRole);
+	        profileKeyPerson.setOtherProjectRoleCategory(otherProjectRole);
+	    } else {
+            profileKeyPerson.setProjectRole(ProjectRoleDataType.PD_PI);
+        }
 	}
 
 	/**
