@@ -16,12 +16,12 @@ package org.kuali.kra.s2s.rrkeypersonexpanded;
 
 import gov.grants.apply.forms.rrKeyPersonExpanded20V20.PersonProfileDataType;
 import gov.grants.apply.forms.rrKeyPersonExpanded20V20.PersonProfileDataType.Profile;
-import gov.grants.apply.forms.rrKeyPersonExpanded20V20.PersonProfileDataType.Profile.BioSketchsAttached;
 import gov.grants.apply.forms.rrKeyPersonExpanded20V20.PersonProfileDataType.Profile.OtherProjectRoleCategory;
 import gov.grants.apply.forms.rrKeyPersonExpanded20V20.ProjectRoleDataType;
 import gov.grants.apply.forms.rrKeyPersonExpanded20V20.RRKeyPersonExpanded20Document;
 import gov.grants.apply.forms.rrKeyPersonExpanded20V20.RRKeyPersonExpanded20Document.RRKeyPersonExpanded20;
 import gov.grants.apply.forms.rrKeyPersonExpanded20V20.RRKeyPersonExpanded20Document.RRKeyPersonExpanded20.AdditionalProfilesAttached;
+import gov.grants.apply.forms.rrKeyPersonExpanded20V20.RRKeyPersonExpanded20Document.RRKeyPersonExpanded20.BioSketchsAttached;
 import gov.grants.apply.forms.rrKeyPersonExpanded20V20.RRKeyPersonExpanded20Document.RRKeyPersonExpanded20.SupportsAttached;
 import gov.grants.apply.system.attachmentsV10.AttachedFileDataType;
 
@@ -61,6 +61,7 @@ public class RRKeyPersonExpandedV2_0Generator extends
 	private static final Log LOG = LogFactory
 			.getLog(RRKeyPersonExpandedV2_0Generator.class);
 	Rolodex rolodex;
+	private static final int MAX_KEY_PERSON_COUNT = 100;
 	/*
 	 * This method gives details of Principal Investigator,KeyPersons and the
 	 * corresponding attachments for RRKeyPersons
@@ -148,9 +149,8 @@ public class RRKeyPersonExpandedV2_0Generator extends
 	private void setBioSketchAttchment(
 			RRKeyPersonExpanded20 rrKeyPersonExpanded,
 			ProposalPerson extraPerson) {
-		gov.grants.apply.forms.rrKeyPersonExpanded20V20.RRKeyPersonExpanded20Document.RRKeyPersonExpanded20.BioSketchsAttached 
-		    personBioSketch = (gov.grants.apply.forms.rrKeyPersonExpanded20V20.RRKeyPersonExpanded20Document.
-		            RRKeyPersonExpanded20.BioSketchsAttached) BioSketchsAttached.Factory.newInstance();
+		BioSketchsAttached 
+		    personBioSketch =  BioSketchsAttached.Factory.newInstance();
 		AttachedFileDataType bioSketchAttachment = getPernonnelAttachments(
 				pdDoc, extraPerson.getPersonId(), extraPerson.getRolodexId(),
 				BIOSKETCH_TYPE);
