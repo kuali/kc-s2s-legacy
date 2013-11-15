@@ -220,8 +220,9 @@ public class PHS398FellowshipSupplementalV2_0Generator extends PHS398FellowshipS
                             break;
                         case CELLLINEIND:
                             // stem cell line indicator
-                            if (answer != null)
-                                stemCellstype.setStemCellsIndicator(getYesNoEnum(answer));
+                            stemCellstype.setStemCellsIndicator(answer
+                                    .equals(S2SConstants.PROPOSAL_YNQ_ANSWER_N) ? YesNoDataType.Y_YES
+                                    : YesNoDataType.N_NO);
                             break;
                         case STEMCELLLINES:
                             List<Answer> answerList = getAnswers(questionnaireQuestion,answerHeader);                      
