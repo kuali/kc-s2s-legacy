@@ -841,9 +841,9 @@ public class RRSF424_2_0_V2Generator extends RRSF424BaseGenerator {
 		String employerId = "";
 		ProposalSite applicantOrganization = pdDoc.getDevelopmentProposal()
 				.getApplicantOrganization();
-        
+		boolean isNih  = isSponsorInHierarchy(pdDoc.getDevelopmentProposal(), SPONSOR_GROUPS,SPONSOR_NIH);
         if (applicantOrganization != null) {            
-            if(applicantOrganization.getOrganization().getPhsAccount()!= null){             
+            if(applicantOrganization.getOrganization().getPhsAccount()!= null && isNih){             
                 employerId = applicantOrganization.getOrganization()
                         .getPhsAccount();
             }else{
