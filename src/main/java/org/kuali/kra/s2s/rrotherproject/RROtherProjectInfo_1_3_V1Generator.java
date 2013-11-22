@@ -68,6 +68,7 @@ import org.kuali.rice.coreservice.framework.parameter.ParameterService;
 public class RROtherProjectInfo_1_3_V1Generator extends
 		RROtherProjectInfoBaseGenerator {
 	private static final String HISTORIC_DESTIONATION_YNQ = "125";
+	private static final int NSF_DATAMGMNT_ATTAACHMENT = 200;
 	private static final String EMPTY_STRING = " ";
 	private static final Log LOG = LogFactory
 			.getLog(RROtherProjectInfo_1_3_V1Generator.class);
@@ -563,8 +564,7 @@ public class RROtherProjectInfo_1_3_V1Generator extends
                             abstractAttachments.setAbstractAttachment(attachedFileDataType);
                         }
                     break;
-                    case(OTHER_ATTACHMENT):
-                    case(SUPPLIMENTARY_ATTACHMENT):
+                    case(NSF_DATAMGMNT_ATTAACHMENT):
                         isOtherAttachmentsExists = true;
                     break;
                 }
@@ -620,8 +620,7 @@ public class RROtherProjectInfo_1_3_V1Generator extends
 				.getDevelopmentProposal();
 		for (Narrative narrative : developmentProposal.getNarratives()) {
 			if (narrative.getNarrativeTypeCode() != null
-					&& (Integer.parseInt(narrative.getNarrativeTypeCode()) == OTHER_ATTACHMENT || Integer
-							.parseInt(narrative.getNarrativeTypeCode()) == SUPPLIMENTARY_ATTACHMENT)) {
+					&& (Integer.parseInt(narrative.getNarrativeTypeCode()) == NSF_DATAMGMNT_ATTAACHMENT)) {
 				attachedFileDataType= getAttachedFileType(narrative);
 				if(attachedFileDataType != null){
 					attachedFileDataTypeList.add(attachedFileDataType);
