@@ -64,6 +64,7 @@ import org.kuali.kra.s2s.generator.bo.OtherDirectCostInfo;
 import org.kuali.kra.s2s.generator.bo.OtherPersonnelInfo;
 import org.kuali.kra.s2s.generator.impl.RRBudgetBaseGenerator;
 import org.kuali.kra.s2s.util.S2SConstants;
+import org.kuali.rice.core.api.util.type.KualiDecimal;
 
 /**
  * 
@@ -205,7 +206,8 @@ public class RRBudgetV1_3Generator extends RRBudgetBaseGenerator {
                             .setCumulativeTotalFundsRequestedSeniorKeyPerson(budgetSummaryData
                                     .getCumTotalFundsForSrPersonnel().bigDecimalValue());
                 }
-                if (budgetSummaryData.getCumTotalFundsForOtherPersonnel() != null) {
+                if (budgetSummaryData.getCumTotalFundsForOtherPersonnel() != null
+                        && budgetSummaryData.getCumTotalFundsForOtherPersonnel().isGreaterThan(KualiDecimal.ZERO)) {
                     budgetSummary
                             .setCumulativeTotalFundsRequestedOtherPersonnel(budgetSummaryData
                                     .getCumTotalFundsForOtherPersonnel()
