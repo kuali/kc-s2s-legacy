@@ -96,7 +96,7 @@ public class RRSF424_2_0_V2Generator extends RRSF424BaseGenerator {
 	private static final Log LOG = LogFactory
 			.getLog(RRSF424_2_0_V2Generator.class);
 	private DepartmentalPerson departmentalPerson;
-	protected static final int PHS_COVERLETTER = 39;
+	protected static final int RRSF424_Cover_Letter = 139;
 	
 
 	/**
@@ -896,7 +896,7 @@ public class RRSF424_2_0_V2Generator extends RRSF424BaseGenerator {
         for (Narrative narrative : pdDoc.getDevelopmentProposal()
                 .getNarratives()) {
             if (narrative.getNarrativeTypeCode() != null
-                    && Integer.parseInt(narrative.getNarrativeTypeCode()) == PHS_COVERLETTER) {
+                    && Integer.parseInt(narrative.getNarrativeTypeCode()) == RRSF424_Cover_Letter) {
                 AttachedFileDataType preAttachment = getAttachedFileType(narrative);
                 if(preAttachment != null){
                     rrsf42420.setCoverLetterAttachment(preAttachment);
