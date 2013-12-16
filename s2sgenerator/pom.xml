@@ -7,9 +7,9 @@
 		<version>0.0.1-SNAPSHOT</version>
 		<!-- <relativePath>../pom.xml</relativePath> -->
 	</parent>
-	<artifactId>rrbudget-1.3-gg</artifactId>
+	<artifactId>sf424r-2.0-gg</artifactId>
 	<packaging>jar</packaging>
-	<version>1.1</version>
+	<version>1.5</version>
 		<build>
 		<plugins>
  	      <plugin>
@@ -25,15 +25,15 @@
 	    </plugins>
 		<resources>
 			<resource>
-				<targetPath>org/kuali/kra/s2s/rrbudget</targetPath>
-				<directory>../src/main/java/org/kuali/kra/s2s/rrbudget</directory>
+				<targetPath>org/kuali/kra/s2s/sf424r</targetPath>
+				<directory>../src/main/java/org/kuali/kra/s2s/sf424r</directory>
 				<excludes>
 					<exclude>**/*.java</exclude>
 				</excludes>
 			</resource>
 			<resource>
-			 <targetPath>org/kuali/kra/s2s/rrbudget</targetPath>
-			 <directory>../target/classes/org/kuali/kra/s2s/rrbudget</directory>
+			 <targetPath>org/kuali/kra/s2s/sf424r</targetPath>
+			 <directory>../target/classes/org/kuali/kra/s2s/sf424r</directory>
 			</resource>
 		</resources>
 		
