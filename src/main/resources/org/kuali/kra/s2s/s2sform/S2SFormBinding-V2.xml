@@ -24,7 +24,7 @@
 			org/kuali/kra/s2s/phs398modularbudget/PHS398_ModularBudget-V1.2.fo.xsl
 		</stylesheet>
 		<pkgName>gov.grants.apply.forms.phs398ModularBudget12V12</pkgName>
-		<sortIndex>1</sortIndex>
+		<sortIndex>190</sortIndex>
 	</Form>
 	<Form namespace="http://apply.grants.gov/forms/SF424_2_1-V2.1">
 		<formName>SF424-V2.1</formName>
@@ -69,6 +69,7 @@
 			org/kuali/kra/s2s/phs398researchplan/PHS398_ResearchPlan_2_0-V2.0.fo.xsl
 		</stylesheet>
 		<pkgName>gov.grants.apply.forms.phs398ResearchPlan20V20</pkgName>
+		<sortIndex>195</sortIndex>
 	</Form>
 	<Form namespace="http://apply.grants.gov/forms/PHS398_ResearchTrainingProgramPlan_2_0-V2.0">
 		<formName>PHS398_ResearchTrainingProgramPlan_2_0</formName>
@@ -184,6 +185,7 @@
 		<pkgName>
 			gov.grants.apply.forms.rrOtherProjectInfo13V13
 		</pkgName>
+		<sortIndex>140</sortIndex>
 	</Form>
 	<Form namespace="http://apply.grants.gov/forms/RR_SubawardBudget10_30_1_3-V1.3">
 		<formName>RR_SubawardBudget10_30_1_3</formName>
