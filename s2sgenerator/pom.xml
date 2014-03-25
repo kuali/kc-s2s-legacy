@@ -7,9 +7,22 @@
 		<version>0.0.1-SNAPSHOT</version>
 		<!-- <relativePath>../pom.xml</relativePath> -->
 	</parent>
+	    <repositories>
+        <repository>
+            <id>kuali.nexus</id>
+            <name>Nexus Repository Manager</name>
+            <url>http://nexus.kuali.org/content/groups/public</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
 	<artifactId>sf424r-2.0-gg</artifactId>
 	<packaging>jar</packaging>
-	<version>1.6</version>
+	<version>1.7</version>
 		<build>
 		<plugins>
  	      <plugin>
