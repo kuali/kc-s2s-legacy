@@ -1,14 +1,14 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
    <parent> 
-		<groupId>org.kuali.kra.s2s</groupId>
+		<groupId>org.kuali.coeus</groupId>
 		<artifactId>kc_s2s_project</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-    <artifactId>gg-forms8</artifactId>
+    <artifactId>s2s-gg-forms-z</artifactId>
     <packaging>jar</packaging>
     <name>KC S2S Project. Grants.gov schema compiler</name>
-    <version>2.6</version>
+    <version>1.0.0</version>
     <url>http://kuali.org</url>
     <build>
         <plugins>
@@ -37,9 +37,9 @@
                 </executions>
                 <configuration>
 					<argLine>-Xmx512m -XX:MaxPermSize=512m</argLine>
-                    <schemaDirectory>../src/main/config/xsd/s2s/ggforms</schemaDirectory>
+                    <schemaDirectory>../src/main/config/xsd/s2s/ggformsZ</schemaDirectory>
                     <memoryInitialSize>256m</memoryInitialSize>
-                    <memoryMaximumSize>512m</memoryMaximumSize>
+                    <memoryMaximumSize>1024m</memoryMaximumSize>
                     <download>true</download>
                     <sourceGenerationDirectory>target/generated/xmlbeans</sourceGenerationDirectory>
                     <verbose>true</verbose>
