@@ -22,9 +22,9 @@
 		</dependency>
 	</dependencies>
  	<properties>
-		<kc_project.build.directory>../kc_project</kc_project.build.directory>
+		<kc_project.build.directory>../kc_project-5_2_x</kc_project.build.directory>
 		<kc_project.artifactId>kc_project</kc_project.artifactId>
 		<kc_project.groupId>org.kuali.kra</kc_project.groupId>
-		<kc_project.version>5.1.1</kc_project.version>
+		<kc_project.version>5.2-SNAPSHOT</kc_project.version>
 	</properties>
  </project>
