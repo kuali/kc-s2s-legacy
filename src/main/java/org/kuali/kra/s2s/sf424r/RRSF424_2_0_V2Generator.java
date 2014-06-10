@@ -44,12 +44,14 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.xmlbeans.XmlObject;
+import org.drools.command.GetDefaultValue;
 import org.kuali.kra.bo.ArgValueLookup;
 import org.kuali.kra.bo.CoeusModule;
 import org.kuali.kra.bo.CoeusSubModule;
@@ -57,6 +59,7 @@ import org.kuali.kra.bo.KcPerson;
 import org.kuali.kra.bo.Organization;
 import org.kuali.kra.bo.Rolodex;
 import org.kuali.kra.bo.Sponsor;
+import org.kuali.kra.bo.Unit;
 import org.kuali.kra.budget.BudgetDecimal;
 import org.kuali.kra.budget.core.Budget;
 import org.kuali.kra.budget.distributionincome.BudgetProjectIncome;
@@ -65,6 +68,7 @@ import org.kuali.kra.budget.nonpersonnel.BudgetLineItem;
 import org.kuali.kra.budget.nonpersonnel.BudgetLineItemCalculatedAmount;
 import org.kuali.kra.budget.parameters.BudgetPeriod;
 import org.kuali.kra.infrastructure.KraServiceLocator;
+import org.kuali.kra.institutionalproposal.proposaladmindetails.ProposalAdminDetails;
 import org.kuali.kra.institutionalproposal.service.InstitutionalProposalService;
 import org.kuali.kra.proposaldevelopment.bo.DevelopmentProposal;
 import org.kuali.kra.proposaldevelopment.bo.Narrative;
@@ -84,6 +88,7 @@ import org.kuali.kra.s2s.generator.bo.DepartmentalPerson;
 import org.kuali.kra.s2s.generator.impl.RRSF424BaseGenerator;
 import org.kuali.kra.s2s.util.S2SConstants;
 import org.kuali.kra.service.KcPersonService;
+import org.kuali.kra.service.UnitService;
 import org.kuali.rice.krad.service.BusinessObjectService;
 
 /**
@@ -298,9 +303,10 @@ public class RRSF424_2_0_V2Generator extends RRSF424BaseGenerator {
 			orgType.setOrganizationName(organization.getOrganizationName());
 			orgType.setDUNSID(organization.getDunsNumber());
 		}
-		if (pdDoc.getDevelopmentProposal().getOwnedByUnit() != null) {
-			String departmentName = pdDoc.getDevelopmentProposal()
-					.getOwnedByUnit().getUnitName();
+		Unit leadUnit = pdDoc.getDevelopmentProposal()
+        		.getOwnedByUnit();
+        if (leadUnit != null) {
+			String departmentName = leadUnit.getUnitName();
 			if (departmentName != null
 					&& departmentName.length() > DEPARTMENT_NAME_MAX_LENGTH) {
 				departmentName = departmentName.substring(0,
@@ -309,7 +315,8 @@ public class RRSF424_2_0_V2Generator extends RRSF424BaseGenerator {
 			orgType.setDepartmentName(departmentName);
 
 			// divisionName
-			String divisionName = s2sUtilService.getDivisionName(pdDoc);
+			
+			String divisionName = getDivisionName(leadUnit);//s2sUtilService.getDivisionName(pdDoc);
 			if (divisionName != null) {
 				orgType.setDivisionName(divisionName);
 			}
@@ -317,7 +324,11 @@ public class RRSF424_2_0_V2Generator extends RRSF424BaseGenerator {
 		return orgType;
 	}
 
-	/**
+	private String getDivisionName(Unit leadUnit) {
+	    return leadUnit.getParentUnitNumber()!=null?leadUnit.getParentUnit().getUnitName():leadUnit.getUnitName();
+    }
+
+    /**
 	 * 
 	 * This method is used to get Contact person information
 	 * 
@@ -567,9 +578,8 @@ public class RRSF424_2_0_V2Generator extends RRSF424BaseGenerator {
 
 	private void setDepartmentName(OrganizationContactPersonDataType PDPI,ProposalPerson PI) {
 	    if(PI.getHomeUnit() != null) {
-	        KcPersonService kcPersonService = KraServiceLocator.getService(KcPersonService.class);
-	        KcPerson kcPersons = kcPersonService.getKcPersonByPersonId(PI.getPersonId());
-	        String departmentName =  kcPersons.getOrganizationIdentifier();
+	        String personId = PI.getPersonId();
+            String departmentName = getPrimaryDepartment(personId);
 	        PDPI.setDepartmentName(departmentName);
 	    }
 	    else
@@ -579,7 +589,18 @@ public class RRSF424_2_0_V2Generator extends RRSF424BaseGenerator {
 	    }
 	}
 
-	private void setDirectoryTitle(OrganizationContactPersonDataType PDPI,
+    private String getPrimaryDepartment(String personId) {
+        KcPersonService kcPersonService = KraServiceLocator.getService(KcPersonService.class);
+        KcPerson kcPersons = kcPersonService.getKcPersonByPersonId(personId);
+        return getUnitName(kcPersons.getOrganizationIdentifier());
+    }
+
+	private String getUnitName(String departmentCode) {
+	    Unit unit = KraServiceLocator.getService(UnitService.class).getUnit(departmentCode);
+	    return unit==null?null:unit.getUnitName();
+    }
+
+    private void setDirectoryTitle(OrganizationContactPersonDataType PDPI,
 			ProposalPerson PI) {
 		if (PI.getDirectoryTitle() != null) {
 			if (PI.getDirectoryTitle().length() > DIRECTORY_TITLE_MAX_LENGTH) {
@@ -675,7 +696,8 @@ public class RRSF424_2_0_V2Generator extends RRSF424BaseGenerator {
 		aorInfoType.setAddress(address);
 		aorInfoType.setPhone(departmentalPerson.getOfficePhone());
 		aorInfoType.setFax(departmentalPerson.getFaxNumber());
-		String departmentName = departmentalPerson.getDirDept();
+		String departmentName = isApplicationSubmitted(pdDoc.getDevelopmentProposal())?
+		            getPrimaryDepartment(departmentalPerson.getPersonId()):departmentalPerson.getDirDept();
 		if (departmentName != null
 		        && departmentName.length() > DEPARTMENT_NAME_MAX_LENGTH) {
 		    departmentName = departmentName.substring(0,
@@ -687,7 +709,7 @@ public class RRSF424_2_0_V2Generator extends RRSF424BaseGenerator {
 
 	private void setDivisionName(AORInfoType aorInfoType) {
 		if (departmentalPerson.getHomeUnit() != null) {
-			aorInfoType.setDivisionName(departmentalPerson.getHomeUnit());
+			aorInfoType.setDivisionName(getUnitName(departmentalPerson.getHomeUnit()));
 		}
 	}
 
@@ -992,5 +1014,12 @@ public class RRSF424_2_0_V2Generator extends RRSF424BaseGenerator {
 				.newInstance();
 		rrSF424Document.setRRSF42420(rrsf42420);
 		return rrSF424Document;
+	}
+	private boolean isApplicationSubmitted(DevelopmentProposal developmentProposal){
+        Map<String, Object> fieldValues = new HashMap<String, Object>();
+        fieldValues.put("devProposalNumber", pdDoc.getDevelopmentProposal().getProposalNumber());
+        List<ProposalAdminDetails> proposalAdminDetailsList = (List<ProposalAdminDetails>) KraServiceLocator.getService(BusinessObjectService.class).findMatching(
+                ProposalAdminDetails.class, fieldValues);
+        return proposalAdminDetailsList.size()>0;
 	}
 }
