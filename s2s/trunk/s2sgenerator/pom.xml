@@ -20,35 +20,51 @@
             </snapshots>
         </repository>
     </repositories>
-	<artifactId>rrotherproject-1.3-gg</artifactId>
+	<artifactId>sf424r-2.0-gg</artifactId>
 	<packaging>jar</packaging>
-	<version>1.2</version>
-		<build>
+	<version>1.9</version>
+	<build>
 		<plugins>
- 	      <plugin>
-	        <groupId>org.apache.maven.plugins</groupId>
-	        <artifactId>maven-jar-plugin</artifactId>
-	        <version>2.4</version>
-	        <configuration>
-	          <archive>
-				<addMavenDescriptor>false</addMavenDescriptor>
-			  </archive>
-	        </configuration>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+						<configuration>
+							<includes>
+				 				<include>*.java</include>
+							</includes>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+		        <groupId>org.apache.maven.plugins</groupId>
+		        <artifactId>maven-jar-plugin</artifactId>
+		        <version>2.4</version>
+		        <configuration>
+				 <excludes>
+				 	<exclude>**/*.java</exclude>
+				 </excludes>
+		        </configuration>
 	      </plugin>
 	    </plugins>
 		<resources>
-			<resource>
-				<targetPath>org/kuali/kra/s2s/rrotherproject</targetPath>
-				<directory>../src/main/java/org/kuali/kra/s2s/rrotherproject</directory>
-				<excludes>
-					<exclude>**/*.java</exclude>
-				</excludes>
-			</resource>
-			<resource>
-			 <targetPath>org/kuali/kra/s2s/rrotherproject</targetPath>
-			 <directory>../target/classes/org/kuali/kra/s2s/rrotherproject</directory>
+ 			<resource>
+				<targetPath>org/kuali/kra/s2s/${s2sgenerator.directory}</targetPath>
+				<directory>../src/main/java/org/kuali/kra/s2s/${s2sgenerator.directory}</directory>
+ 			</resource>
+ 			<resource>
+			 <targetPath>org/kuali/kra/s2s/${s2sgenerator.directory}</targetPath>
+			 <directory>../target/classes/org/kuali/kra/s2s/${s2sgenerator.directory}</directory>
 			</resource>
 		</resources>
-		
 	</build>
+	<properties>
+		<s2sgenerator.directory>sf424r</s2sgenerator.directory>
+	</properties>
 </project>
