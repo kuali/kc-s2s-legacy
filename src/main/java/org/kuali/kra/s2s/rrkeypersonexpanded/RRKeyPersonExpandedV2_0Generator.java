@@ -14,6 +14,7 @@
  */
 package org.kuali.kra.s2s.rrkeypersonexpanded;
 
+
 import gov.grants.apply.forms.rrKeyPersonExpanded20V20.PersonProfileDataType;
 import gov.grants.apply.forms.rrKeyPersonExpanded20V20.PersonProfileDataType.Profile;
 import gov.grants.apply.forms.rrKeyPersonExpanded20V20.PersonProfileDataType.Profile.OtherProjectRoleCategory;
@@ -34,6 +35,7 @@ import org.apache.commons.logging.LogFactory;
 import org.apache.xmlbeans.XmlObject;
 import org.kuali.kra.bo.KcPerson;
 import org.kuali.kra.bo.Rolodex;
+import org.kuali.kra.bo.Unit;
 import org.kuali.kra.infrastructure.Constants;
 import org.kuali.kra.infrastructure.KraServiceLocator;
 import org.kuali.kra.proposaldevelopment.bo.DevelopmentProposal;
@@ -212,7 +214,9 @@ public class RRKeyPersonExpandedV2_0Generator extends
 				.getDevelopmentProposal();
 		setOrganizationName(profile, developmentProposal);
 		setDepartmentNameToProfile(profile,PI);
-		String divisionName = PI.getDivision();
+		Unit leadUnit = pdDoc.getDevelopmentProposal()
+                .getOwnedByUnit();
+        String divisionName =getDivisionName(leadUnit);
 		if (divisionName != null) {
 			profile.setDivisionName(divisionName);
 		}
@@ -228,6 +232,10 @@ public class RRKeyPersonExpandedV2_0Generator extends
 		setAttachments(profile, PI);
 		profileDataType.setProfile(profile);
 	}
+	
+	private String getDivisionName(Unit leadUnit) {
+        return leadUnit.getParentUnitNumber()!=null?leadUnit.getParentUnit().getUnitName():leadUnit.getUnitName();
+    }
 
 	/*
 	 * This method is used to add department name to profile
@@ -236,7 +244,7 @@ public class RRKeyPersonExpandedV2_0Generator extends
 		if(PI.getHomeUnit() != null) {
             KcPersonService kcPersonService = KraServiceLocator.getService(KcPersonService.class);
             KcPerson kcPersons = kcPersonService.getKcPersonByPersonId(PI.getPersonId());
-            String departmentName =  kcPersons.getOrganizationIdentifier();
+            String departmentName =  kcPersons.getUnit().getUnitName(); 
             profile.setDepartmentName(departmentName);
         }
         else
