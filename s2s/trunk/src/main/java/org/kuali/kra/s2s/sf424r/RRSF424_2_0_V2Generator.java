@@ -578,9 +578,10 @@ public class RRSF424_2_0_V2Generator extends RRSF424BaseGenerator {
 
 	private void setDepartmentName(OrganizationContactPersonDataType PDPI,ProposalPerson PI) {
 	    if(PI.getHomeUnit() != null) {
-	        String personId = PI.getPersonId();
-            String departmentName = getPrimaryDepartment(personId);
-	        PDPI.setDepartmentName(departmentName);
+	        KcPersonService kcPersonService = KraServiceLocator.getService(KcPersonService.class);
+            KcPerson kcPersons = kcPersonService.getKcPersonByPersonId(PI.getPersonId());
+            String departmentName =  kcPersons.getUnit().getUnitName();
+            PDPI.setDepartmentName(departmentName);
 	    }
 	    else
 	    {
@@ -631,9 +632,20 @@ public class RRSF424_2_0_V2Generator extends RRSF424BaseGenerator {
 			setDivisionName(aorInfoType);
 		}
 		if (applicantOrganization != null) {
-			aorInfoType.setOrganizationName(applicantOrganization
-					.getLocationName());
-		}
+		    aorInfoType.setOrganizationName(applicantOrganization
+                .getLocationName());
+         if(applicantOrganization.
+                    getOrganization().getRolodex() != null) {
+             String departmentName = applicantOrganization.
+                        getOrganization().getRolodex().getOrganization();
+                if (departmentName != null
+                        && departmentName.length() > DEPARTMENT_NAME_MAX_LENGTH) {
+                    departmentName = departmentName.substring(0,
+                            DEPARTMENT_NAME_MAX_LENGTH - 1);
+                }
+            aorInfoType.setDepartmentName(departmentName);
+         }
+       }
 
 		return aorInfoType;
 	}
@@ -696,21 +708,14 @@ public class RRSF424_2_0_V2Generator extends RRSF424BaseGenerator {
 		aorInfoType.setAddress(address);
 		aorInfoType.setPhone(departmentalPerson.getOfficePhone());
 		aorInfoType.setFax(departmentalPerson.getFaxNumber());
-		String departmentName = isApplicationSubmitted(pdDoc.getDevelopmentProposal())?
-		            getPrimaryDepartment(departmentalPerson.getPersonId()):departmentalPerson.getDirDept();
-		if (departmentName != null
-		        && departmentName.length() > DEPARTMENT_NAME_MAX_LENGTH) {
-		    departmentName = departmentName.substring(0,
-		            DEPARTMENT_NAME_MAX_LENGTH - 1);
-		}
-		aorInfoType.setDepartmentName(departmentName);
 		aorInfoType.setEmail(departmentalPerson.getEmailAddress());
 	}
 
 	private void setDivisionName(AORInfoType aorInfoType) {
-		if (departmentalPerson.getHomeUnit() != null) {
-			aorInfoType.setDivisionName(getUnitName(departmentalPerson.getHomeUnit()));
-		}
+	    String divisionName = s2sUtilService.getDivisionName(pdDoc);
+        if (divisionName != null) {
+            aorInfoType.setDivisionName(divisionName);
+        }
 	}
 
 	/**
