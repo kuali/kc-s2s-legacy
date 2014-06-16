@@ -559,7 +559,12 @@ public class RRSF424_2_0_V2Generator extends RRSF424BaseGenerator {
 				PDPI.setAddress(globLibV20Generator.getAddressDataType(PI));
 				setDirectoryTitle(PDPI, PI);
 				setDepartmentName(PDPI,PI);
-				setDivisionName(PDPI,PI);
+				Unit leadUnit = pdDoc.getDevelopmentProposal()
+                        .getOwnedByUnit();
+                String divisionName =getDivisionName(leadUnit);
+                if (divisionName != null) {
+                    PDPI.setDivisionName(divisionName);
+                }
 				if (applicantOrganization != null) {
 					PDPI.setOrganizationName(applicantOrganization
 							.getLocationName());
