@@ -102,6 +102,7 @@ public class RRSF424_2_0_V2Generator extends RRSF424BaseGenerator {
 			.getLog(RRSF424_2_0_V2Generator.class);
 	private DepartmentalPerson departmentalPerson;
 	protected static final int RRSF424_Cover_Letter = 139;
+	private static final Integer HEIRARCHY_LEVEL = 4;
 	
 
 	/**
@@ -161,6 +162,7 @@ public class RRSF424_2_0_V2Generator extends RRSF424BaseGenerator {
 	 * 
 	 * @return EstimatedProjectFunding estimated total cost for the project.
 	 * @throws S2SException
+	 * 
 	 */
 	private EstimatedProjectFunding getProjectFunding() {
 		BudgetDocument budgetDoc = null;
@@ -316,7 +318,7 @@ public class RRSF424_2_0_V2Generator extends RRSF424BaseGenerator {
 
 			// divisionName
 			
-			String divisionName = getDivisionName(leadUnit);//s2sUtilService.getDivisionName(pdDoc);
+			String divisionName = getPIDivision(leadUnit.getUnitNumber());//s2sUtilService.getDivisionName(pdDoc);
 			if (divisionName != null) {
 				orgType.setDivisionName(divisionName);
 			}
@@ -559,12 +561,7 @@ public class RRSF424_2_0_V2Generator extends RRSF424BaseGenerator {
 				PDPI.setAddress(globLibV20Generator.getAddressDataType(PI));
 				setDirectoryTitle(PDPI, PI);
 				setDepartmentName(PDPI,PI);
-				Unit leadUnit = pdDoc.getDevelopmentProposal()
-                        .getOwnedByUnit();
-                String divisionName =getDivisionName(leadUnit);
-                if (divisionName != null) {
-                    PDPI.setDivisionName(divisionName);
-                }
+				setDivisionName(PDPI,PI);
 				if (applicantOrganization != null) {
 					PDPI.setOrganizationName(applicantOrganization
 							.getLocationName());
@@ -578,15 +575,48 @@ public class RRSF424_2_0_V2Generator extends RRSF424BaseGenerator {
 		String divisionName = PI.getDivision();
 		if (divisionName != null) {
 			PDPI.setDivisionName(divisionName);
+		} else {
+		    String personId = PI.getPersonId();
+		    KcPersonService kcPersonService = KraServiceLocator.getService(KcPersonService.class);
+	        KcPerson kcPersons = kcPersonService.getKcPersonByPersonId(personId);
+	        if(kcPersons.getOrganizationIdentifier() != null) {
+	        divisionName=getPIDivision(kcPersons.getOrganizationIdentifier());
+	        }
+	        if(divisionName != null) {
+	            PDPI.setDivisionName(divisionName);
+	        }
 		}
+	}
+	
+	private String getPIDivision(String departmentId) {
+	    String divisionName = null;
+	    String unitName=getUnitName(departmentId);
+	    String heirarchyLevelDivisionName= null;
+        int levelCount =1;
+	    List<Unit> heirarchyUnits = KraServiceLocator.getService(UnitService.class).getUnitHierarchyForUnit(departmentId);
+        for(Unit heirarchyUnit:heirarchyUnits) {
+            if(levelCount < HEIRARCHY_LEVEL && heirarchyUnit.getUnitName().equalsIgnoreCase(unitName)) {
+                 divisionName=heirarchyUnit.getUnitName();
+            }
+            else if(levelCount == HEIRARCHY_LEVEL) {
+                heirarchyLevelDivisionName=heirarchyUnit.getUnitName();
+                if(heirarchyUnit.getUnitName().equalsIgnoreCase(unitName)) {
+                    divisionName=heirarchyLevelDivisionName;  
+                }
+            }
+            else if(levelCount > HEIRARCHY_LEVEL && heirarchyUnit.getUnitName().equalsIgnoreCase(unitName)) {
+                divisionName=heirarchyLevelDivisionName;
+            }
+            levelCount++;
+        }
+	    return divisionName;
 	}
 
 	private void setDepartmentName(OrganizationContactPersonDataType PDPI,ProposalPerson PI) {
 	    if(PI.getHomeUnit() != null) {
-	        KcPersonService kcPersonService = KraServiceLocator.getService(KcPersonService.class);
-            KcPerson kcPersons = kcPersonService.getKcPersonByPersonId(PI.getPersonId());
-            String departmentName =  kcPersons.getUnit().getUnitName();
-            PDPI.setDepartmentName(departmentName);
+	        String personId = PI.getPersonId();
+            String departmentName = getPrimaryDepartment(personId);
+	        PDPI.setDepartmentName(departmentName);
 	    }
 	    else
 	    {
@@ -637,20 +667,9 @@ public class RRSF424_2_0_V2Generator extends RRSF424BaseGenerator {
 			setDivisionName(aorInfoType);
 		}
 		if (applicantOrganization != null) {
-		    aorInfoType.setOrganizationName(applicantOrganization
-                .getLocationName());
-         if(applicantOrganization.
-                    getOrganization().getRolodex() != null) {
-             String departmentName = applicantOrganization.
-                        getOrganization().getRolodex().getOrganization();
-                if (departmentName != null
-                        && departmentName.length() > DEPARTMENT_NAME_MAX_LENGTH) {
-                    departmentName = departmentName.substring(0,
-                            DEPARTMENT_NAME_MAX_LENGTH - 1);
-                }
-            aorInfoType.setDepartmentName(departmentName);
-         }
-       }
+			aorInfoType.setOrganizationName(applicantOrganization
+					.getLocationName());
+		}
 
 		return aorInfoType;
 	}
@@ -717,10 +736,9 @@ public class RRSF424_2_0_V2Generator extends RRSF424BaseGenerator {
 	}
 
 	private void setDivisionName(AORInfoType aorInfoType) {
-	    String divisionName = s2sUtilService.getDivisionName(pdDoc);
-        if (divisionName != null) {
-            aorInfoType.setDivisionName(divisionName);
-        }
+		if (departmentalPerson.getHomeUnit() != null) {
+			aorInfoType.setDivisionName(getUnitName(departmentalPerson.getHomeUnit()));
+		}
 	}
 
 	/**
