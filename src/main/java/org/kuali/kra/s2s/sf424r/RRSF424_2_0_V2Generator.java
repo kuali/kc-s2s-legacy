@@ -70,6 +70,7 @@ import org.kuali.kra.budget.parameters.BudgetPeriod;
 import org.kuali.kra.infrastructure.KraServiceLocator;
 import org.kuali.kra.institutionalproposal.proposaladmindetails.ProposalAdminDetails;
 import org.kuali.kra.institutionalproposal.service.InstitutionalProposalService;
+import org.kuali.kra.proposaldevelopment.ProposalDevelopmentUtils;
 import org.kuali.kra.proposaldevelopment.bo.DevelopmentProposal;
 import org.kuali.kra.proposaldevelopment.bo.Narrative;
 import org.kuali.kra.proposaldevelopment.bo.ProposalPerson;
@@ -395,9 +396,9 @@ public class RRSF424_2_0_V2Generator extends RRSF424BaseGenerator {
 		ApplicationType applicationType = ApplicationType.Factory.newInstance();
 		Map<String, String> submissionInfo = s2sUtilService
 				.getSubmissionType(pdDoc);
-		if (pdDoc.getDevelopmentProposal().getProposalTypeCode() != null
-				&& Integer.parseInt(pdDoc.getDevelopmentProposal()
-						.getProposalTypeCode()) < PROPOSAL_TYPE_CODE_6) {
+		if (pdDoc.getDevelopmentProposal().getProposalTypeCode() != null) {
+				/*&& Integer.parseInt(pdDoc.getDevelopmentProposal()
+						.getProposalTypeCode()) < PROPOSAL_TYPE_CODE_6) {*/
 			// Check <6 to ensure that if proposalType='TASk ORDER", it must not
 			// set. THis is because enum ApplicationType has no
 			// entry for TASK ORDER
@@ -490,8 +491,27 @@ public class RRSF424_2_0_V2Generator extends RRSF424BaseGenerator {
     }
 
 	private Enum getApplicationTypeCodeDataType() {
-		return ApplicationTypeCodeDataType.Enum.forInt(Integer.parseInt(pdDoc
-				.getDevelopmentProposal().getProposalTypeCode()));
+	    ApplicationTypeCodeDataType.Enum applicationTypeEnum = null;
+        if (pdDoc.getDevelopmentProposal().getProposalTypeCode() != null) {
+            String proposalTypeCode = pdDoc.getDevelopmentProposal().getProposalTypeCode();
+            if(ProposalDevelopmentUtils.getProposalDevelopmentDocumentParameter(
+                    ProposalDevelopmentUtils.PROPOSAL_TYPE_CODE_NEW_PARM).equals(proposalTypeCode)){
+                applicationTypeEnum = ApplicationTypeCodeDataType.NEW;
+            }else if(ProposalDevelopmentUtils.getProposalDevelopmentDocumentParameter(
+                    ProposalDevelopmentUtils.PROPOSAL_TYPE_CODE_RESUBMISSION_PARM).equals(proposalTypeCode)){
+                applicationTypeEnum = ApplicationTypeCodeDataType.RESUBMISSION;
+            }else if(ProposalDevelopmentUtils.getProposalDevelopmentDocumentParameter(
+                    ProposalDevelopmentUtils.PROPOSAL_TYPE_CODE_RENEWAL_PARM).equals(proposalTypeCode)){
+                applicationTypeEnum = ApplicationTypeCodeDataType.RENEWAL;
+            }else if(ProposalDevelopmentUtils.getProposalDevelopmentDocumentParameter(
+                    ProposalDevelopmentUtils.PROPOSAL_TYPE_CODE_CONTINUATION_PARM).equals(proposalTypeCode)){
+                applicationTypeEnum = ApplicationTypeCodeDataType.CONTINUATION;
+            }else if(ProposalDevelopmentUtils.getProposalDevelopmentDocumentParameter(
+                    ProposalDevelopmentUtils.PROPOSAL_TYPE_CODE_REVISION_PARM).equals(proposalTypeCode)){
+                applicationTypeEnum = ApplicationTypeCodeDataType.REVISION;
+            }
+        }
+        return applicationTypeEnum;
 	}
 
 	/**
