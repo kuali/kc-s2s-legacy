@@ -20,9 +20,9 @@
             </snapshots>
         </repository>
     </repositories>
-	<artifactId>sf424r-2.0-gg</artifactId>
+	<artifactId>rrkeypersonexpanded-2.0-gg</artifactId>
 	<packaging>jar</packaging>
-	<version>2.0</version>
+	<version>1.2</version>
 	<build>
 		<plugins>
 			<plugin>
@@ -65,6 +65,6 @@
 		</resources>
 	</build>
 	<properties>
-		<s2sgenerator.directory>sf424r</s2sgenerator.directory>
+		<s2sgenerator.directory>rrkeypersonexpanded</s2sgenerator.directory>
 	</properties>
 </project>

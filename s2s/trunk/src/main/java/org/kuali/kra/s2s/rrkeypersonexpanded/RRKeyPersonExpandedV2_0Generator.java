@@ -50,6 +50,7 @@ import org.kuali.kra.s2s.util.S2SConstants;
 import org.kuali.kra.service.KcPersonService;
 import org.kuali.kra.service.SponsorService;
 import org.kuali.kra.service.UnitService;
+import org.kuali.rice.coreservice.framework.parameter.ParameterService;
 import org.kuali.rice.kns.util.AuditError;
 import org.kuali.rice.krad.service.BusinessObjectService;
 /**
@@ -66,7 +67,7 @@ public class RRKeyPersonExpandedV2_0Generator extends
             .getLog(RRKeyPersonExpandedV2_0Generator.class);
     Rolodex rolodex;
     private static final int MAX_KEY_PERSON_COUNT = 100;
-    private static final Integer HEIRARCHY_LEVEL = 4;
+    private static Integer HEIRARCHY_LEVEL;
     /*
      * This method gives details of Principal Investigator,KeyPersons and the
      * corresponding attachments for RRKeyPersons
@@ -248,6 +249,8 @@ public class RRKeyPersonExpandedV2_0Generator extends
         String divisionName = null;
         String unitName=getUnitName(departmentId);
         String heirarchyLevelDivisionName= null;
+        HEIRARCHY_LEVEL = Integer.parseInt(KraServiceLocator.getService(ParameterService.class).
+                getParameterValueAsString("KC-PD", "Document", "HIERARCHY_LEVEL"));
         int levelCount =1;
         List<Unit> heirarchyUnits = KraServiceLocator.getService(UnitService.class).getUnitHierarchyForUnit(departmentId);
         for(Unit heirarchyUnit:heirarchyUnits) {
@@ -502,7 +505,10 @@ public class RRKeyPersonExpandedV2_0Generator extends
      */
     private void setProjectRoleCategoryToProfile(ProposalPerson keyPerson,
             Profile profileKeyPerson) {
-        if (keyPerson.getRolodexId() == null) {
+        if (keyPerson.getRolodexId() != null 
+                && keyPerson.getProjectRole().equals(ProjectRoleDataType.PD_PI.toString())) {
+            profileKeyPerson.setProjectRole(ProjectRoleDataType.PD_PI);
+        } else {
             profileKeyPerson.setProjectRole(ProjectRoleDataType.OTHER_SPECIFY);
             OtherProjectRoleCategory otherProjectRole = OtherProjectRoleCategory.Factory
                     .newInstance();
@@ -519,10 +525,8 @@ public class RRKeyPersonExpandedV2_0Generator extends
             }
             otherProjectRole.setStringValue(otherRole);
             profileKeyPerson.setOtherProjectRoleCategory(otherProjectRole);
-        } else {
-            profileKeyPerson.setProjectRole(ProjectRoleDataType.PD_PI);
         }
-    }
+      }
 
     /**
      * This method creates {@link XmlObject} of type
